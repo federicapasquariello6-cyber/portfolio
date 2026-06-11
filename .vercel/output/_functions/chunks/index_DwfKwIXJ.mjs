@@ -1,12 +1,12 @@
-import { c as createComponent } from './astro-component_BIqsiMyj.mjs';
+import { c as createComponent } from './astro-component_lUFkuSDG.mjs';
 import 'piccolore';
-import { p as renderComponent, k as renderTemplate, m as maybeRenderHead } from './entrypoint_DzmdYMnq.mjs';
-import { $ as $$Layout } from './Layout_DKCZkR0f.mjs';
+import { p as renderComponent, k as renderTemplate, m as maybeRenderHead } from './entrypoint_CVKCoKCy.mjs';
+import { $ as $$Layout } from './Layout_BkqPRvEh.mjs';
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$props, $$slots);
   Astro2.self = $$Index;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "FP Portfolio — Home" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="py-20 space-y-6"> <p class="text-sm uppercase tracking-widest text-gray-400 animate-fade-in">
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "FP Portfolio - Home" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="py-20 space-y-6"> <p class="text-sm uppercase tracking-widest text-gray-400 animate-fade-in">
 Portfolio personale
 </p> <h1 class="text-6xl font-bold leading-tight animate-slide-up">
 Ciao, sono Federica
@@ -16,7 +16,7 @@ Laureata in Ingegneria Energetica. Sto creando il mio primo portfolio con Astro 
 Progetti
 </a> <a href="/contatti" class="border border-gray-600 px-6 py-3 rounded-lg hover:scale-105 transition">
 Contattami
-</a> </div> </section>  <section class="border-t border-gray-800 pt-10 animate-fade-in"> <h2 class="text-sm font-semibold text-gray-400 uppercase mb-6">
+</a> </div> </section> <section class="border-t border-gray-800 pt-10 animate-fade-in"> <h2 class="text-sm font-semibold text-gray-400 uppercase mb-6">
 Competenze
 </h2> <div class="flex flex-wrap gap-2"> ${["Astro", "Tailwind", "HTML", "CSS", "JavaScript", "Node.js"].map((skill) => renderTemplate`<span class="px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300 hover:scale-105 transition"> ${skill} </span>`)} </div> </section> ` })}`;
 }, "C:/Users/Utente/Desktop/Armonia/cd Desktop/src/pages/index.astro", void 0);

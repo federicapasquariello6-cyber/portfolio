@@ -2,10 +2,8 @@
 import Layout from "../layout/Layout.astro";
 ---
 
-<Layout title="FP Portfolio — Home">
-
+<Layout title="FP Portfolio - Home">
   <section class="py-20 space-y-6">
-
     <p class="text-sm uppercase tracking-widest text-gray-400 animate-fade-in">
       Portfolio personale
     </p>
@@ -19,39 +17,33 @@ import Layout from "../layout/Layout.astro";
     </p>
 
     <div class="flex gap-4 pt-4 animate-fade-in">
-
-      <a href="/progetti"
-         class="bg-white text-black px-6 py-3 rounded-lg hover:scale-105 transition">
+      <a
+        href="/progetti"
+        class="bg-white text-black px-6 py-3 rounded-lg hover:scale-105 transition"
+      >
         Progetti
       </a>
 
-      <a href="/contatti"
-         class="border border-gray-600 px-6 py-3 rounded-lg hover:scale-105 transition">
+      <a
+        href="/contatti"
+        class="border border-gray-600 px-6 py-3 rounded-lg hover:scale-105 transition"
+      >
         Contattami
       </a>
-
     </div>
-
   </section>
 
-  <!-- SKILLS -->
   <section class="border-t border-gray-800 pt-10 animate-fade-in">
-
     <h2 class="text-sm font-semibold text-gray-400 uppercase mb-6">
       Competenze
     </h2>
 
     <div class="flex flex-wrap gap-2">
-
-      {["Astro", "Tailwind", "HTML", "CSS", "JavaScript", "Node.js"].map(skill => (
+      {["Astro", "Tailwind", "HTML", "CSS", "JavaScript", "Node.js"].map((skill) => (
         <span class="px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300 hover:scale-105 transition">
           {skill}
         </span>
       ))}
-
     </div>
-
   </section>
-
 </Layout>
-    
