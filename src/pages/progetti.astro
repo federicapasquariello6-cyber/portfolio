@@ -2,30 +2,52 @@
 import Layout from "../layout/Layout.astro";
 ---
 
-<Layout title="Progetti - Portfolio">
+<Layout title="FP Portfolio - Progetti">
+  <section class="space-y-8">
+    <div class="space-y-4">
+      <p class="text-sm uppercase tracking-widest text-cyan-300">
+        Progetti
+      </p>
 
-  <section class="py-16">
-    <h1 class="text-4xl font-bold mb-8">
-      I miei progetti
-    </h1>
+      <h1 class="text-4xl sm:text-5xl font-bold">
+        I miei primi passi nello sviluppo web
+      </h1>
 
-    <div class="grid gap-6 md:grid-cols-2">
+      <p class="text-slate-400 max-w-3xl">
+        Questa sezione raccoglierà i progetti realizzati durante il mio percorso. Al momento il primo progetto completo è questo portfolio, che ho sviluppato per imparare a strutturare un sito, personalizzarne il design e pubblicarlo online.
+      </p>
+    </div>
 
-      <div class="border rounded-xl p-6 hover:shadow-md transition">
-        <h2 class="text-xl font-semibold mb-2">Portfolio Astro</h2>
-        <p class="text-gray-600">
-          Primo sito web creato con Astro e Tailwind.
-        </p>
-      </div>
+    <article class="bg-slate-900 border border-slate-800 rounded-lg p-6 space-y-4 max-w-2xl">
+      <h2 class="text-2xl font-bold text-slate-100">
+        Portfolio personale
+      </h2>
 
-      <div class="border rounded-xl p-6 hover:shadow-md transition">
-        <h2 class="text-xl font-semibold mb-2">Progetto Armonia</h2>
-        <p class="text-gray-600">
-          Esercizi e simulazioni.
-        </p>
-      </div>
+      <p class="text-slate-400">
+        Ho realizzato questo sito con Astro e Tailwind per presentare il mio percorso, sperimentare con componenti, layout, palette colori, form di contatto e deploy su Vercel.
+      </p>
 
+      <p class="text-sm text-cyan-300">
+        Tecnologie: Astro, Tailwind, GitHub, Vercel
+      </p>
+
+      <a
+        href="https://portfolio-b1x5r77ra-federica-pasquariello-s-projects.vercel.app"
+        target="_blank"
+        class="inline-block text-sm font-semibold text-slate-950 bg-cyan-300 px-4 py-2 rounded-lg hover:scale-105 transition"
+      >
+        Repository GitHub
+      </a>
+    </article>
+
+    <div class="border border-dashed border-slate-700 rounded-lg p-6 max-w-2xl">
+      <h2 class="text-xl font-semibold text-slate-200">
+        Prossimi progetti
+      </h2>
+
+      <p class="text-slate-400 mt-2">
+        Aggiungerò nuovi lavori man mano che completerò esercizi, sperimentazioni e progetti personali legati allo sviluppo web.
+      </p>
     </div>
   </section>
-
 </Layout>

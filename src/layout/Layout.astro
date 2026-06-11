@@ -16,21 +16,26 @@ const { title = "FP Portfolio" } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="bg-gray-950 text-white min-h-screen">
-    <nav class="max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
-      <a href="/" class="font-bold text-lg tracking-wide">
-        FP • Portfolio
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <nav class="max-w-5xl mx-auto px-6 py-6 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
+      <a href="/" class="font-bold text-lg tracking-wide text-cyan-300">
+        FP Portfolio
       </a>
 
-      <div class="flex gap-6 text-sm text-gray-300">
-        <a href="/" class="hover:text-white transition">Home</a>
-        <a href="/progetti" class="hover:text-white transition">Progetti</a>
-        <a href="/contatti" class="hover:text-white transition">Contatti</a>
+      <div class="flex flex-wrap gap-5 text-sm text-slate-300">
+        <a href="/" class="hover:text-cyan-300 transition">Home</a>
+        <a href="/progetti" class="hover:text-cyan-300 transition">Progetti</a>
+        <a href="/contatti" class="hover:text-cyan-300 transition">Contatti</a>
+        <a href="https://github.com/federicapasquariello6-cyber" target="_blank" class="hover:text-cyan-300 transition">GitHub</a>
       </div>
     </nav>
 
     <main class="max-w-5xl mx-auto px-6 py-10">
       <slot />
     </main>
+
+    <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800 text-sm text-slate-400">
+      <p>© 2026 Federica Pasquariello - Portfolio personale</p>
+    </footer>
   </body>
 </html>
