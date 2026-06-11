@@ -2,47 +2,48 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+export const prerender = false;
 
-const Schema = z.object({
-  nome: z.string().min(2).max(100),
+const contactSchema = z.object({
+  name: z.string().min(1),
   email: z.string().email(),
-  messaggio: z.string().min(10).max(2000),
+  message: z.string().min(1),
 });
 
 export const POST: APIRoute = async ({ request }) => {
-  const body = await request.json();
+  const formData = await request.formData();
 
-  const result = Schema.safeParse(body);
+  const parsed = contactSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message"),
+  });
 
-  if (!result.success) {
-    return new Response(JSON.stringify({ error: "Dati non validi" }), {
-      status: 400,
-    });
+  if (!parsed.success) {
+    return new Response("Dati non validi", { status: 400 });
   }
 
-  const { nome, email, messaggio } = result.data;
+  const resendApiKey = import.meta.env.RESEND_API_KEY;
 
-  const { error } = await resend.emails.send({
+  if (!resendApiKey) {
+    return new Response("RESEND_API_KEY mancante", { status: 500 });
+  }
+
+  const resend = new Resend(resendApiKey);
+
+  await resend.emails.send({
     from: "Portfolio <onboarding@resend.dev>",
-    to: ["federica.pasquariello.6@gmail.com"],
-    subject: "Nuovo messaggio da " + nome,
-    html: `
-      <p><strong>Nome:</strong> ${nome}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Messaggio:</strong></p>
-      <p>${messaggio}</p>
+    to: "federica.pasquariello.6@gmail.com",
+    subject: `Nuovo messaggio da ${parsed.data.name}`,
+    replyTo: parsed.data.email,
+    text: `
+Nome: ${parsed.data.name}
+Email: ${parsed.data.email}
+
+Messaggio:
+${parsed.data.message}
     `,
-    replyTo: email,
   });
 
-  if (error) {
-    return new Response(JSON.stringify({ error: "Errore invio email" }), {
-      status: 500,
-    });
-  }
-
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-  });
+  return new Response("Messaggio inviato", { status: 200 });
 };
