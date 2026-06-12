@@ -45,5 +45,5 @@ ${parsed.data.message}
     `,
   });
 
-  return new Response("Messaggio inviato", { status: 200 });
+  return Response.redirect(new URL("/contatti?success=true", request.url), 303);
 };
