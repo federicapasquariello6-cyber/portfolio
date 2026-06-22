@@ -1,55 +1,171 @@
 ---
 import Layout from "../layout/Layout.astro";
+
+const skills = [
+  "Astro",
+  "Tailwind",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Node.js",
+  "GitHub",
+  "Vercel",
+];
+
+const strengths = [
+  "Metodo tecnico",
+  "Attenzione ai dettagli",
+  "Curiosità digitale",
+];
 ---
 
-<Layout title="FP Portfolio - Home">
-  <section class="py-20 space-y-8">
-    <p class="text-sm uppercase tracking-widest text-cyan-300 animate-fade-in">
-      Portfolio personale
-    </p>
+<Layout title="Federica Pasquariello | Frontend Developer">
 
-    <div class="space-y-5">
-      <h1 class="text-5xl sm:text-6xl font-bold leading-tight animate-slide-up">
-        Ciao, sono Federica Pasquariello
+  <!-- HERO -->
+  <section class="py-24">
+    <div class="max-w-4xl">
+
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 animate-fade-in">
+        Frontend Developer in formazione
+      </p>
+
+      <h1 class="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl animate-slide-up">
+        Porto il metodo dell'ingegneria dentro il web.
       </h1>
 
-      <p class="text-xl text-slate-300 max-w-3xl animate-fade-in">
-        Sono laureata in Ingegneria Energetica e vengo da un percorso tecnico in cui ho imparato ad analizzare problemi complessi, dati e sistemi legati all'energia e alla sostenibilita.
+      <p class="mt-8 max-w-3xl text-xl leading-relaxed text-slate-600 animate-fade-in">
+        Sono Federica Pasquariello, studentessa di Ingegneria Energetica e attualmente impegnata nello sviluppo web frontend.
       </p>
 
-      <p class="text-lg text-slate-400 max-w-3xl animate-fade-in">
-        Negli ultimi mesi mi sto avvicinando allo sviluppo web per unire metodo ingegneristico, creativita e strumenti digitali. Questo portfolio raccoglie i primi progetti con cui sto costruendo competenze in Astro, Tailwind, JavaScript e Node.js.
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-500 animate-fade-in">
+        Progetto interfacce semplici, accessibili e responsive combinando pensiero analitico e attenzione ai dettagli.
       </p>
-    </div>
 
-    <div class="flex flex-wrap gap-4 pt-4 animate-fade-in">
-      <a
-        href="/progetti"
-        class="bg-cyan-300 text-slate-950 px-6 py-3 rounded-lg font-semibold hover:scale-105 transition"
-      >
-        Guarda i progetti
-      </a>
+      <div class="mt-10 flex flex-wrap gap-4 animate-slide-up">
 
-      <a
-        href="/contatti"
-        class="border border-cyan-700 text-cyan-100 px-6 py-3 rounded-lg hover:bg-slate-900 hover:scale-105 transition"
-      >
-        Contattami
-      </a>
+        <a
+          href="/progetti"
+          class="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+        >
+          Visualizza i progetti
+        </a>
+
+        <a
+          href="/contatti"
+          class="rounded-lg border border-slate-300 px-6 py-3 font-medium text-slate-700 transition hover:border-slate-400 hover:bg-white"
+        >
+          Contattami
+        </a>
+
+      </div>
     </div>
   </section>
 
-  <section class="border-t border-slate-800 pt-10 animate-fade-in">
-    <h2 class="text-sm font-semibold text-cyan-300 uppercase mb-6">
-      Competenze
+  <!-- ABOUT -->
+  <section id="about" class="border-t border-slate-200 py-20">
+  <div class="grid gap-10 lg:grid-cols-2">
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-blue-600">
+        About me
+      </p>
+
+      <h2 class="mt-3 text-3xl font-bold text-slate-900">
+        Chi sono
+      </h2>
+    </div>
+
+    <div class="space-y-5 leading-8 text-slate-600">
+
+      <p>
+        Sono una studentessa di Ingegneria Energetica in transizione verso lo sviluppo web frontend.
+      </p>
+
+      <p>
+        Mi occupo di creare interfacce semplici, pulite e accessibili utilizzando tecnologie moderne come Astro e Tailwind CSS.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="border-t border-slate-200 py-20">
+
+    <p class="text-sm font-semibold uppercase tracking-widest text-blue-600">
+      Skills
+    </p>
+
+    <h2 class="mt-3 text-3xl font-bold text-slate-900">
+      Tecnologie e strumenti
     </h2>
 
-    <div class="flex flex-wrap gap-2">
-      {["Astro", "Tailwind", "HTML", "CSS", "JavaScript", "Node.js", "GitHub", "Vercel"].map((skill) => (
-        <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-sm text-slate-300 hover:border-cyan-600 transition">
-          {skill}
-        </span>
-      ))}
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 class="font-semibold text-slate-900">
+          Frontend Development
+        </h3>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span class="rounded-full bg-slate-100 px-3 py-2 text-sm text-slate-700">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 class="font-semibold text-slate-900">
+          Punti di forza
+        </h3>
+
+        <div class="mt-4 space-y-3">
+          {strengths.map((item) => (
+            <div class="rounded-lg bg-slate-100 px-4 py-3 text-slate-700">
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
+
   </section>
+
+  <!-- MINI PERCORSO (solo preview, NON projects/contact) -->
+  <section class="border-t border-slate-200 py-20">
+
+    <div class="grid gap-6 md:grid-cols-3">
+
+      <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-blue-600">Background</p>
+        <h3 class="mt-3 text-xl font-bold text-slate-900">Ingegneria Energetica</h3>
+        <p class="mt-4 leading-7 text-slate-600">
+          Formazione tecnica orientata all’analisi e alla risoluzione dei problemi.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-blue-600">Oggi</p>
+        <h3 class="mt-3 text-xl font-bold text-slate-900">Frontend Development</h3>
+        <p class="mt-4 leading-7 text-slate-600">
+          Sviluppo web moderno con attenzione a UX e accessibilità.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold text-blue-600">Obiettivo</p>
+        <h3 class="mt-3 text-xl font-bold text-slate-900">Crescita professionale</h3>
+        <p class="mt-4 leading-7 text-slate-600">
+          Unire ingegneria e sviluppo software per creare prodotti di qualità.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
 </Layout>

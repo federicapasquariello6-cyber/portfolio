@@ -1,0 +1,18 @@
+---
+const { id, label, placeholder, rows = 6 } = Astro.props;
+---
+
+<div class="space-y-2">
+  <label for={id} class="text-sm font-medium text-slate-700">
+    {label}
+  </label>
+
+  <textarea
+    id={id}
+    name={id}
+    rows={rows}
+    placeholder={placeholder}
+    required
+    class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+  ></textarea>
+</div>

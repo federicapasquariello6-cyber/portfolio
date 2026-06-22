@@ -1,11 +1,12 @@
 ---
+
 import "../styles/global.css";
 
 interface Props {
-  title?: string;
+title?: string;
 }
 
-const { title = "FP Portfolio" } = Astro.props;
+const { title = "Federica Pasquariello | Frontend Developer" } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,29 +14,113 @@ const { title = "FP Portfolio" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+
+<meta
+  name="description"
+  content="Portfolio di Federica Pasquariello. Studentessa di Ingegneria Energetica e sviluppatrice web frontend."
+/>
+
+<title>{title}</title>
+
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-100">
-    <nav class="max-w-5xl mx-auto px-6 py-6 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
-      <a href="/" class="font-bold text-lg tracking-wide text-cyan-300">
-        FP Portfolio
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <!-- Background decorativo -->
+    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50 via-slate-50 to-white"></div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur">
+  <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="group">
+      <div class="flex flex-col">
+        <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+          Federica Pasquariello
+        </span>
+
+        <span class="text-sm text-slate-500">
+          Frontend Developer · Energy Engineering Student
+        </span>
+      </div>
+    </a>
+
+    <!-- Menu -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="/#about" class="text-slate-600 hover:text-slate-900 transition-colors">
+       About
+    </a>
+
+      <a href="/#skills" class="text-slate-600 hover:text-slate-900 transition-colors">
+      Skills
+    </a>
+
+      <a
+        href="https://github.com/federicapasquariello6-cyber"
+        target="_blank"
+        rel="noreferrer"
+        class="text-slate-600 hover:text-slate-900 transition-colors"
+      >
+        GitHub
       </a>
 
-      <div class="flex flex-wrap gap-5 text-sm text-slate-300">
-        <a href="/" class="hover:text-cyan-300 transition">Home</a>
-        <a href="/progetti" class="hover:text-cyan-300 transition">Progetti</a>
-        <a href="/contatti" class="hover:text-cyan-300 transition">Contatti</a>
-        <a href="https://github.com/federicapasquariello6-cyber" target="_blank" class="hover:text-cyan-300 transition">GitHub</a>
-      </div>
-    </nav>
+      <a
+        href="/cv"
+        class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
+      >
+        CV
+      </a>
+    </div>
+  </nav>
+</header>
 
-    <main class="max-w-5xl mx-auto px-6 py-10">
-      <slot />
-    </main>
+<!-- Main -->
+<main class="max-w-6xl mx-auto px-6 py-20 sm:py-28">
+  <slot />
+</main>
 
-    <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800 text-sm text-slate-400">
-      <p>© 2026 Federica Pasquariello - Portfolio personale</p>
-    </footer>
+<!-- Footer -->
+<footer class="border-t border-slate-200">
+  <div class="max-w-6xl mx-auto px-6 py-8">
+    <div class="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
+      <p class="text-sm text-slate-500">
+        © 2026 Federica Pasquariello
+      </p>
+
+      <p class="text-sm text-slate-500">
+        Built with Astro, Tailwind CSS and TypeScript.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function setActiveLink() {
+    let current = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      if (scrollY >= sectionTop - sectionHeight / 3) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === `/#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", setActiveLink);
+  window.addEventListener("load", setActiveLink);
+</script>
+
   </body>
 </html>
