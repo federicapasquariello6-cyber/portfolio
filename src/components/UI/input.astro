@@ -3,7 +3,8 @@ const { id, label, type = "text", placeholder } = Astro.props;
 ---
 
 <div class="space-y-2">
-  <label for={id} class="text-sm font-medium text-slate-700">
+
+  <label for={id} class="text-sm font-medium text-white/70">
     {label}
   </label>
 
@@ -13,6 +14,21 @@ const { id, label, type = "text", placeholder } = Astro.props;
     type={type}
     placeholder={placeholder}
     required
-    class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+    class="
+      w-full rounded-lg
+      border border-white/10
+      bg-white/5
+      px-4 py-3
+      text-white
+      placeholder:text-white/30
+      outline-none
+      backdrop-blur
+      transition
+
+      focus:border-[#7c5cff]
+      focus:ring-2
+      focus:ring-[#7c5cff]/20
+    "
   />
+
 </div>

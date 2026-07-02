@@ -1,9 +1,8 @@
 ---
-
 import "../styles/global.css";
 
 interface Props {
-title?: string;
+  title?: string;
 }
 
 const { title = "Federica Pasquariello | Frontend Developer" } = Astro.props;
@@ -15,112 +14,146 @@ const { title = "Federica Pasquariello | Frontend Developer" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta
-  name="description"
-  content="Portfolio di Federica Pasquariello. Studentessa di Ingegneria Energetica e sviluppatrice web frontend."
-/>
+    <meta
+      name="description"
+      content="Portfolio di Federica Pasquariello - Frontend Developer"
+    />
 
-<title>{title}</title>
-
+    <title>{title}</title>
   </head>
 
-  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-    <!-- Background decorativo -->
-    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50 via-slate-50 to-white"></div>
+  <body class="min-h-screen text-white antialiased bg-[#0b0f1a]">
 
-<!-- Header -->
-<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur">
-  <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="group">
-      <div class="flex flex-col">
-        <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
-          Federica Pasquariello
-        </span>
+    <!-- 🌌 BACKGROUND GLOW -->
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(124,92,255,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.15),transparent_40%),radial-gradient(circle_at_50%_90%,rgba(124,92,255,0.10),transparent_50%)]"></div>
+    </div>
 
-        <span class="text-sm text-slate-500">
-          Frontend Developer · Energy Engineer
-        </span>
+    <!-- ✨ CURSOR GLOW -->
+    <div id="cursor-glow"></div>
+
+    <style>
+      #cursor-glow {
+        position: fixed;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(124,92,255,0.25), transparent 60%);
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        filter: blur(40px);
+        transition: transform 0.08s ease-out;
+      }
+    </style>
+
+    <!-- HEADER / NAVBAR GLASS -->
+    <header class="fixed top-6 left-0 right-0 z-50 flex justify-center">
+      <nav class="flex items-center gap-8 px-8 py-4 rounded-2xl
+                  bg-white/5 backdrop-blur-xl
+                  border border-white/10 shadow-lg">
+
+        <a href="/" class="text-white/80 hover:text-white transition">Home</a>
+        <a href="/#about" class="text-white/60 hover:text-white transition">About</a>
+        <a href="/#skills" class="text-white/60 hover:text-white transition">Skills</a>
+
+        <a
+          href="https://github.com/federicapasquariello6-cyber"
+          target="_blank"
+          rel="noreferrer"
+          class="text-white/60 hover:text-white transition"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="/cv"
+          class="px-4 py-2 rounded-lg bg-[#7c5cff] text-white hover:translate-y-[-2px] transition"
+        >
+          CV
+        </a>
+
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-3 text-white/50 text-sm">
+        <p>© 2026 Federica Pasquariello</p>
+        <p>Built with Astro + Tailwind CSS</p>
       </div>
-    </a>
+    </footer>
 
-    <!-- Menu -->
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="/#about" class="text-slate-600 hover:text-slate-900 transition-colors">
-       About
-    </a>
+    <!-- 📌 ACTIVE LINK SCRIPT -->
+    <script>
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll("a");
 
-      <a href="/#skills" class="text-slate-600 hover:text-slate-900 transition-colors">
-      Skills
-    </a>
+      function setActive() {
+        let current = "";
 
-      <a
-        href="https://github.com/federicapasquariello6-cyber"
-        target="_blank"
-        rel="noreferrer"
-        class="text-slate-600 hover:text-slate-900 transition-colors"
-      >
-        GitHub
-      </a>
+        sections.forEach((section) => {
+          const top = section.offsetTop;
+          const height = section.clientHeight;
 
-      <a
-        href="/cv"
-        class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
-      >
-        CV
-      </a>
-    </div>
-  </nav>
-</header>
+          if (scrollY >= top - height / 3) {
+            current = section.getAttribute("id");
+          }
+        });
 
-<!-- Main -->
-<main class="max-w-6xl mx-auto px-6 py-20 sm:py-28">
-  <slot />
-</main>
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
 
-<!-- Footer -->
-<footer class="border-t border-slate-200">
-  <div class="max-w-6xl mx-auto px-6 py-8">
-    <div class="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
-      <p class="text-sm text-slate-500">
-        © 2026 Federica Pasquariello
-      </p>
+          if (!href) return;
 
-      <p class="text-sm text-slate-500">
-        Built with Astro, Tailwind CSS and TypeScript.
-      </p>
-    </div>
-  </div>
-</footer>
+          link.classList.remove("text-white", "text-white/80");
+          link.classList.add("text-white/60");
 
-<script>
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  function setActiveLink() {
-    let current = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
-      if (scrollY >= sectionTop - sectionHeight / 3) {
-        current = section.getAttribute("id");
+          if (href === `/#${current}`) {
+            link.classList.remove("text-white/60");
+            link.classList.add("text-white");
+          }
+        });
       }
-    });
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
+      window.addEventListener("scroll", setActive);
+      window.addEventListener("load", setActive);
+    </script>
 
-      if (link.getAttribute("href") === `/#${current}`) {
-        link.classList.add("active");
+    <!-- 🌊 SCROLL REVEAL -->
+    <script>
+      const reveals = document.querySelectorAll(".reveal");
+
+      function revealOnScroll() {
+        const windowHeight = window.innerHeight;
+
+        reveals.forEach((el) => {
+          const top = el.getBoundingClientRect().top;
+
+          if (top < windowHeight - 100) {
+            el.classList.add("active");
+          }
+        });
       }
-    });
-  }
 
-  window.addEventListener("scroll", setActiveLink);
-  window.addEventListener("load", setActiveLink);
-</script>
+      window.addEventListener("scroll", revealOnScroll);
+      window.addEventListener("load", revealOnScroll);
+    </script>
+
+    <!-- 🖱 CURSOR MOVEMENT -->
+    <script>
+      const glow = document.getElementById("cursor-glow");
+
+      window.addEventListener("mousemove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
+    </script>
 
   </body>
 </html>
