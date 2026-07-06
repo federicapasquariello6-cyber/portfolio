@@ -1,34 +1,31 @@
 ---
-const { id, label, placeholder, rows = 6 } = Astro.props;
+const { placeholder = "Messaggio" } = Astro.props;
 ---
 
-<div class="space-y-2">
+<textarea placeholder={placeholder}></textarea>
 
-  <label for={id} class="text-sm font-medium text-white/70">
-    {label}
-  </label>
+<style>
+textarea {
+  width: 100%;
+  min-height: 140px;
 
-  <textarea
-    id={id}
-    name={id}
-    rows={rows}
-    placeholder={placeholder}
-    required
-    class="
-      w-full resize-none rounded-lg
-      border border-white/10
-      bg-white/5
-      px-4 py-3
-      text-white
-      placeholder:text-white/30
-      outline-none
-      backdrop-blur
-      transition
+  padding: 12px 14px;
 
-      focus:border-[#7c5cff]
-      focus:ring-2
-      focus:focus:ring-[#7c5cff]/10 focus:shadow-[0_0_0_3px_rgba(124,92,255,0.15)]
-    "
-  ></textarea>
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
 
-</div>
+  background: rgba(255,255,255,0.04);
+  color: white;
+
+  outline: none;
+
+  resize: vertical;
+
+  transition: 0.2s ease;
+}
+
+textarea:focus {
+  border-color: rgba(124,92,255,0.6);
+  box-shadow: 0 0 0 3px rgba(124,92,255,0.15);
+}
+</style>

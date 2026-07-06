@@ -1,34 +1,27 @@
 ---
-const { id, label, type = "text", placeholder } = Astro.props;
+const { placeholder = "Input", type = "text" } = Astro.props;
 ---
 
-<div class="space-y-2">
+<input type={type} placeholder={placeholder} />
 
-  <label for={id} class="text-sm font-medium text-white/70">
-    {label}
-  </label>
+<style>
+input {
+  width: 100%;
+  padding: 12px 14px;
 
-  <input
-    id={id}
-    name={id}
-    type={type}
-    placeholder={placeholder}
-    required
-    class="
-      w-full rounded-lg
-      border border-white/10
-      bg-white/5
-      px-4 py-3
-      text-white
-      placeholder:text-white/30
-      outline-none
-      backdrop-blur
-      transition
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
 
-      focus:border-[#7c5cff]
-      focus:ring-2
-      focus:ring-[#7c5cff]/20
-    "
-  />
+  background: rgba(255,255,255,0.04);
+  color: white;
 
-</div>
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+input:focus {
+  border-color: rgba(124,92,255,0.6);
+  box-shadow: 0 0 0 3px rgba(124,92,255,0.15);
+}
+</style>

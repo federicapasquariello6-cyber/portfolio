@@ -1,111 +1,61 @@
 ---
 import Layout from "../layout/Layout.astro";
-
-const projectSteps = [
-  "Struttura delle pagine con Astro",
-  "Palette e layout responsive con Tailwind",
-  "Form di contatto collegato a una API",
-  "Deploy online con Vercel e GitHub",
-];
 ---
 
-<Layout title="Progetti | Federica Pasquariello">
+<Layout title="Progetti">
 
-  <section class="space-y-20">
+<a class="back-arrow" href="/">←</a>
 
-    <!-- HERO -->
-    <div class="max-w-3xl space-y-5">
+<section class="page-wrapper">
 
-      <p class="text-sm font-semibold uppercase tracking-widest text-white/60">
-        Progetti
-      </p>
+  <div class="page-box">
+    <h1>Progetti</h1>
+    <p>Raccolta di lavori accademici e progetti personali.</p>
+  </div>
 
-      <h1 class="text-4xl font-bold leading-tight text-white sm:text-5xl">
-        I miei primi passi nello sviluppo web
-      </h1>
+  <div class="grid">
 
-      <p class="text-lg leading-8 text-white/60">
-        Questa sezione cresce insieme al mio percorso. Questo portfolio è il mio primo progetto completo: struttura, UI, codice e deploy.
-      </p>
+    <!-- PROGETTO 1 -->
+    <div class="card">
+      <div class="preview project-1"></div>
 
+      <h3>Portfolio personale</h3>
+      <p>Sito web realizzato con Astro per presentazione CV e progetti.</p>
+
+      <div class="tags">
+        <span>Astro</span>
+        <span>CSS</span>
+      </div>
     </div>
 
-    <!-- PROGETTO PRINCIPALE -->
-    <article class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+    <!-- PROGETTO 2 -->
+    <div class="card">
+      <div class="preview project-2"></div>
 
-      <div class="space-y-8">
+      <h3>Progetti universitari</h3>
+      <p>Analisi e lavori accademici in ingegneria energetica.</p>
 
-        <!-- HEADER -->
-        <div>
-          <p class="text-sm font-semibold text-[#7c5cff]">
-            Progetto 01
-          </p>
-
-          <h2 class="mt-2 text-2xl font-bold text-white">
-            Portfolio personale
-          </h2>
-        </div>
-
-        <!-- DESCRIZIONE -->
-        <p class="max-w-3xl leading-7 text-white/60">
-          Ho realizzato questo sito per imparare a costruire un’esperienza web completa: UI, componenti, routing e deploy.
-        </p>
-
-        <!-- STEPS -->
-        <div class="grid gap-3 md:grid-cols-2">
-
-          {projectSteps.map((step) => (
-            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
-              {step}
-            </div>
-          ))}
-
-        </div>
-
-        <!-- TECH -->
-        <p class="text-sm text-white/50">
-          Tecnologie: Astro, Tailwind CSS, JavaScript, GitHub, Vercel
-        </p>
-
-        <!-- CTA -->
-        <a
-          href="https://github.com/federicapasquariello6-cyber/portfolio"
-          target="_blank"
-          rel="noreferrer"
-          class="inline-block rounded-lg bg-[#7c5cff] px-5 py-2 text-sm font-semibold text-white transition hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(124,92,255,0.3)]"
-        >
-          Vedi codice su GitHub
-        </a>
-
+      <div class="tags">
+        <span>Engineering</span>
+        <span>Study</span>
       </div>
+    </div>
 
-    </article>
+    <!-- PROGETTO 3 -->
+    <div class="card">
+      <div class="preview project-3"></div>
 
-    <!-- FUTURO -->
-    <section class="grid gap-6 md:grid-cols-2">
+      <h3>UI Concepts</h3>
+      <p>Prototipi interfacce web moderne e responsive.</p>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-        <h2 class="text-xl font-semibold text-white">
-          Prossimi progetti
-        </h2>
-
-        <p class="mt-3 leading-7 text-white/60">
-          Aggiungerò nuovi lavori man mano che crescerò come developer.
-        </p>
+      <div class="tags">
+        <span>UI</span>
+        <span>Frontend</span>
       </div>
+    </div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-        <h2 class="text-xl font-semibold text-white">
-          Cosa voglio migliorare
-        </h2>
+  </div>
 
-        <p class="mt-3 leading-7 text-white/60">
-          Accessibilità, microinterazioni e componenti riutilizzabili.
-        </p>
-      </div>
-
-    </section>
-
-  </section>
+</section>
 
 </Layout>

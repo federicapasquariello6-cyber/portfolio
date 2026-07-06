@@ -1,159 +1,66 @@
 ---
 import "../styles/global.css";
 
-interface Props {
-  title?: string;
-}
-
-const { title = "Federica Pasquariello | Frontend Developer" } = Astro.props;
+const { title = "FP | Portfolio" } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
 
-    <meta
-      name="description"
-      content="Portfolio di Federica Pasquariello - Frontend Developer"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
 
-    <title>{title}</title>
-  </head>
+<body>
 
-  <body class="min-h-screen text-white antialiased bg-[#0b0f1a]">
+<div class="glow"></div>
 
-    <!-- 🌌 BACKGROUND GLOW -->
-    <div class="fixed inset-0 -z-10">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(124,92,255,0.25),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.15),transparent_40%),radial-gradient(circle_at_50%_90%,rgba(124,92,255,0.10),transparent_50%)]"></div>
-    </div>
+<header class="nav">
 
-    <!-- ✨ CURSOR GLOW -->
-    <div id="cursor-glow"></div>
+  <div class="logo">FP | Portfolio</div>
 
-    <style>
-      #cursor-glow {
-        position: fixed;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        pointer-events: none;
-        background: radial-gradient(circle, rgba(124,92,255,0.25), transparent 60%);
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        filter: blur(40px);
-        transition: transform 0.08s ease-out;
-      }
-    </style>
+  <nav>
+    <a href="/progetti">Progetti</a>
+    <a href="/cv">CV</a>
+    <a href="/contatti">Contatti</a>
+  </nav>
+</header>
 
-    <!-- HEADER / NAVBAR GLASS -->
-    <header class="fixed top-6 left-0 right-0 z-50 flex justify-center">
-      <nav class="flex items-center gap-8 px-8 py-4 rounded-2xl
-                  bg-white/5 backdrop-blur-xl
-                  border border-white/10 shadow-lg">
+<script>
+  const nav = document.querySelector(".nav");
 
-        <a href="/" class="text-white/80 hover:text-white transition">Home</a>
-        <a href="/#about" class="text-white/60 hover:text-white transition">About</a>
-        <a href="/#skills" class="text-white/60 hover:text-white transition">Skills</a>
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+</script>
 
-        <a
-          href="https://github.com/federicapasquariello6-cyber"
-          target="_blank"
-          rel="noreferrer"
-          class="text-white/60 hover:text-white transition"
-        >
-          GitHub
-        </a>
+<div class="cursor" id="cursor"></div>
 
-        <a
-          href="/cv"
-          class="px-4 py-2 rounded-lg bg-[#7c5cff] text-white hover:translate-y-[-2px] transition"
-        >
-          CV
-        </a>
+<script>
+  const cursor = document.getElementById("cursor");
 
-      </nav>
-    </header>
+  window.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+</script>
 
-    <!-- MAIN -->
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
-      <slot />
-    </main>
+<main class="container">
+  <slot />
+</main>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-white/10">
-      <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-3 text-white/50 text-sm">
-        <p>© 2026 Federica Pasquariello</p>
-        <p>Built with Astro + Tailwind CSS</p>
-      </div>
-    </footer>
+<footer class="footer">
+  <p>© {new Date().getFullYear()} FP</p>
+</footer>
 
-    <!-- 📌 ACTIVE LINK SCRIPT -->
-    <script>
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll("a");
-
-      function setActive() {
-        let current = "";
-
-        sections.forEach((section) => {
-          const top = section.offsetTop;
-          const height = section.clientHeight;
-
-          if (scrollY >= top - height / 3) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          const href = link.getAttribute("href");
-
-          if (!href) return;
-
-          link.classList.remove("text-white", "text-white/80");
-          link.classList.add("text-white/60");
-
-          if (href === `/#${current}`) {
-            link.classList.remove("text-white/60");
-            link.classList.add("text-white");
-          }
-        });
-      }
-
-      window.addEventListener("scroll", setActive);
-      window.addEventListener("load", setActive);
-    </script>
-
-    <!-- 🌊 SCROLL REVEAL -->
-    <script>
-      const reveals = document.querySelectorAll(".reveal");
-
-      function revealOnScroll() {
-        const windowHeight = window.innerHeight;
-
-        reveals.forEach((el) => {
-          const top = el.getBoundingClientRect().top;
-
-          if (top < windowHeight - 100) {
-            el.classList.add("active");
-          }
-        });
-      }
-
-      window.addEventListener("scroll", revealOnScroll);
-      window.addEventListener("load", revealOnScroll);
-    </script>
-
-    <!-- 🖱 CURSOR MOVEMENT -->
-    <script>
-      const glow = document.getElementById("cursor-glow");
-
-      window.addEventListener("mousemove", (e) => {
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
-      });
-    </script>
-
-  </body>
+</body>
 </html>

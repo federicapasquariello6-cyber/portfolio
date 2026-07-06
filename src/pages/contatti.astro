@@ -1,81 +1,46 @@
 ---
 import Layout from "../layout/Layout.astro";
-import Input from "../components/UI/input.astro";
-import Textarea from "../components/UI/Textarea.astro";
-import Button from "../components/UI/button.astro";
-
-const messageSent = Astro.url.searchParams.get("success") === "true";
 ---
 
-<Layout title="Contatti | Federica Pasquariello">
+<Layout title="Contatti">
 
-  <section class="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] animate-fadeUp">
+<section class="page-wrapper">
 
-    <!-- LEFT -->
-    <div class="space-y-8">
+  <div class="page-box">
+    <h1>Contatti</h1>
+    <p>Scrivimi per collaborazioni o informazioni.</p>
+  </div>
 
-      <div class="space-y-4">
+  <div class="contact">
 
-        <p class="text-sm font-semibold uppercase tracking-widest text-white/60">
-          Contatti
-        </p>
+    <div class="info">
 
-        <h1 class="text-4xl font-bold leading-tight text-white sm:text-5xl">
-          Parliamo del tuo progetto
-        </h1>
-
-        <p class="text-lg leading-8 text-white/60">
-          Scrivimi per collaborazioni, feedback o idee. Rispondo appena possibile.
-        </p>
-
+      <div class="box">
+        <h3>Email</h3>
+        <p>federica.pasquariello.6@gmail.com</p>
       </div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-
-        <h2 class="text-lg font-semibold text-white">
-          In miglioramento continuo
-        </h2>
-
-        <p class="mt-3 leading-7 text-white/60">
-          Sto lavorando su UI, accessibilità e qualità del codice per costruire interfacce sempre più solide e moderne.
-        </p>
-
+      <div class="box">
+        <h3>Disponibilità</h3>
+        <p>Progetti junior e accademici</p>
       </div>
 
     </div>
 
-    <!-- RIGHT -->
-    <div class="space-y-5 animate-fadeUp">
+    <form class="form">
 
-      {messageSent && (
-        <p class="rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
-          Messaggio inviato correttamente.
-        </p>
-      )}
+      <input type="text" placeholder="Nome" />
+      <input type="email" placeholder="Email" />
+      <textarea placeholder="Messaggio"></textarea>
 
-      <form
-        method="POST"
-        action="/api/contatto"
-        class="space-y-5 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
-      >
+      <a class="btn" href="mailto:federica.pasquariello.6@gmail.com.com">
+        Invia messaggio
+      </a>
 
-        <Input id="name" label="Nome" placeholder="Il tuo nome" />
-        <Input id="email" label="Email" type="email" placeholder="nome@email.com" />
+    </form>
 
-        <Textarea
-          id="message"
-          label="Messaggio"
-          placeholder="Scrivi il tuo messaggio..."
-        />
+  </div>
 
-        <Button type="submit">
-          Invia messaggio
-        </Button>
-
-      </form>
-
-    </div>
-
-  </section>
+</section>
 
 </Layout>
