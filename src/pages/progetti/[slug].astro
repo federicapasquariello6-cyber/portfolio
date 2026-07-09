@@ -1,0 +1,63 @@
+---
+import Layout from "../../layout/Layout.astro";
+import { projects } from "../../data/projects.js";
+
+const { slug } = Astro.params;
+const project = projects.find((p) => p.slug === slug);
+
+// se lo slug nell'URL non corrisponde a nessun progetto, torna alla lista invece di crashare
+if (!project) {
+  return Astro.redirect("/progetti");
+}
+---
+
+<Layout title={project.title}>
+
+<section class="page-wrapper">
+
+  <a class="back-arrow" href="/progetti">←</a>
+
+  <div class="page-box">
+    <h1>{project.title}</h1>
+    <p>{project.description}</p>
+  </div>
+
+  <div class={`preview ${project.previewClass}`} style="height: 320px; margin-bottom: 32px;"></div>
+
+  <div class="tags" style="margin-bottom: 32px;">
+    {project.tags.map((tag) => <span>{tag}</span>)}
+  </div>
+
+  <div class="story">
+
+    <div class="card reveal-on-scroll">
+      <h3>Il problema</h3>
+      <p>{project.problem}</p>
+    </div>
+
+    <div class="card reveal-on-scroll">
+      <h3>Cosa ho fatto</h3>
+      <p>{project.approach}</p>
+    </div>
+
+    <div class="card reveal-on-scroll">
+      <h3>Cosa ne è uscito</h3>
+      <p>{project.outcome}</p>
+    </div>
+
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 24px;">
+    <div class="box reveal-on-scroll">
+      <h3>Ruolo</h3>
+      <p>{project.role}</p>
+    </div>
+    <div class="box reveal-on-scroll">
+      <h3>Stack</h3>
+      <p>{project.stack}</p>
+    </div>
+  </div>
+
+</section>
+
+</Layout>

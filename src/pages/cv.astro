@@ -4,15 +4,14 @@ import Layout from "../layout/Layout.astro";
 
 <Layout title="CV">
 
-<a class="back-arrow" href="/">←</a>
-
-
 <section class="page-wrapper">
+
+  <a class="back-arrow" href="/">←</a>
 
   <!-- HEADER -->
   <div class="page-box">
     <h1>Curriculum Vitae</h1>
-    <p>Formazione ed esperienze accademiche.</p>
+    <p>Formazione, esperienze e competenze.</p>
   </div>
 
   <!-- ESPERIENZA -->
@@ -20,16 +19,16 @@ import Layout from "../layout/Layout.astro";
 
   <div class="timeline">
 
-    <div class="item">
-      <div class="dot"></div>
+    <div class="item reveal-on-scroll">
+      <span class="cv-icon cv-icon-work" aria-hidden="true"></span>
       <div>
         <h3>Tirocinio universitario</h3>
         <p>URTI RE Project</p>
       </div>
     </div>
 
-    <div class="item">
-      <div class="dot"></div>
+    <div class="item reveal-on-scroll">
+      <span class="cv-icon cv-icon-people" aria-hidden="true"></span>
       <div>
         <h3>Tutoraggio scolastico</h3>
         <p>Supporto didattico e affiancamento studenti</p>
@@ -43,30 +42,47 @@ import Layout from "../layout/Layout.astro";
 
   <div class="timeline">
 
-    <div class="item">
-      <div class="dot"></div>
+    <div class="item reveal-on-scroll">
+      <span class="cv-icon cv-icon-study" aria-hidden="true"></span>
       <div>
         <h3>Laurea in Ingegneria Energetica</h3>
-        <p>Percorso accademico in ambito energetico</p>
+        <p>Tesi: "La macchina asincrona e il suo futuro sostenibile"</p>
+        <a class="inline-link" href="/progetti/progetti-universitari">
+          Scopri di più sulla tesi →
+        </a>
       </div>
     </div>
 
-    <div class="item">
-      <div class="dot"></div>
+    <div class="item reveal-on-scroll">
+      <span class="cv-icon cv-icon-certificate" aria-hidden="true"></span>
       <div>
         <h3>Social Media Manager</h3>
         <p>Attestato in comunicazione digitale</p>
       </div>
     </div>
 
-    <div class="item">
-      <div class="dot"></div>
+    <div class="item reveal-on-scroll">
+      <span class="cv-icon cv-icon-leaf" aria-hidden="true"></span>
       <div>
         <h3>Impatto ambientale e sostenibilità</h3>
         <p>Gestione e valutazione attività produttive</p>
       </div>
     </div>
 
+  </div>
+
+  <!-- COMPETENZE -->
+  <h2 class="section-title">Competenze</h2>
+
+  <div class="tags cv-skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>Astro</span>
+    <span>JavaScript</span>
+    <span>Analisi dati</span>
+    <span>Sostenibilità energetica</span>
+    <span>Comunicazione digitale</span>
+    <span>Problem solving</span>
   </div>
 
 </section>

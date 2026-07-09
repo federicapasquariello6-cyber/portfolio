@@ -1,12 +1,13 @@
 ---
 import Layout from "../layout/Layout.astro";
+import { projects } from "../data/projects.js";
 ---
 
 <Layout title="Progetti">
 
-<a class="back-arrow" href="/">←</a>
-
 <section class="page-wrapper">
+
+  <a class="back-arrow" href="/">←</a>
 
   <div class="page-box">
     <h1>Progetti</h1>
@@ -15,44 +16,18 @@ import Layout from "../layout/Layout.astro";
 
   <div class="grid">
 
-    <!-- PROGETTO 1 -->
-    <div class="card">
-      <div class="preview project-1"></div>
+    {projects.map((project) => (
+      <a class="card project-card reveal-on-scroll" href={`/progetti/${project.slug}`}>
+        <div class={`preview ${project.previewClass}`}></div>
 
-      <h3>Portfolio personale</h3>
-      <p>Sito web realizzato con Astro per presentazione CV e progetti.</p>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
 
-      <div class="tags">
-        <span>Astro</span>
-        <span>CSS</span>
-      </div>
-    </div>
-
-    <!-- PROGETTO 2 -->
-    <div class="card">
-      <div class="preview project-2"></div>
-
-      <h3>Progetti universitari</h3>
-      <p>Analisi e lavori accademici in ingegneria energetica.</p>
-
-      <div class="tags">
-        <span>Engineering</span>
-        <span>Study</span>
-      </div>
-    </div>
-
-    <!-- PROGETTO 3 -->
-    <div class="card">
-      <div class="preview project-3"></div>
-
-      <h3>UI Concepts</h3>
-      <p>Prototipi interfacce web moderne e responsive.</p>
-
-      <div class="tags">
-        <span>UI</span>
-        <span>Frontend</span>
-      </div>
-    </div>
+        <div class="tags">
+          {project.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </a>
+    ))}
 
   </div>
 

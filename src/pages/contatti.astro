@@ -1,13 +1,14 @@
 ---
 import Layout from "../layout/Layout.astro";
+
+const sent = Astro.url.searchParams.get("success") === "true";
 ---
 
 <Layout title="Contatti">
 
-<a class="back-arrow" href="/">←</a>
-
-
 <section class="page-wrapper">
+
+  <a class="back-arrow" href="/">←</a>
 
   <div class="page-box">
     <h1>Contatti</h1>
@@ -20,25 +21,24 @@ import Layout from "../layout/Layout.astro";
 
       <div class="box">
         <h3>Email</h3>
-        <p>federica.pasquariello.6@gmail.com</p>
-      </div>
-
-      <div class="box">
-        <h3>Disponibilità</h3>
-        <p>Progetti junior e accademici</p>
+        <a class="mail-link" href="mailto:federica.pasquariello.6@gmail.com">
+          federica.pasquariello.6@gmail.com
+        </a>
       </div>
 
     </div>
 
-    <form class="form">
+    <form class="form" method="POST" action="/api/contatto">
 
-      <input type="text" placeholder="Nome" />
-      <input type="email" placeholder="Email" />
-      <textarea placeholder="Messaggio"></textarea>
+      <input type="text" name="name" placeholder="Nome" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="message" placeholder="Messaggio" required></textarea>
 
-      <a class="btn" href="mailto:federica.pasquariello.6@gmail.com.com">
+      <button class="btn" type="submit">
         Invia messaggio
-      </a>
+      </button>
+
+      {sent && <p class="form-status">Messaggio inviato correttamente.</p>}
 
     </form>
 

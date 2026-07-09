@@ -7,36 +7,46 @@ import Button from "../components/UI/button.astro";
 
 <section class="hero">
 
-  <h1>Federica Pasquariello</h1>
+  <img
+    src="/images/federica.png"
+    alt="Illustrazione di Federica"
+    class="hero-photo"
+  />
 
-  <p class="subtitle">
-    Laureata in Ingegneria Energetica
-  </p>
+  <div class="hero-text">
 
-  <p class="description">
-    con crescente interesse per lo sviluppo front-end e la progettazione di interfacce web.
-  </p>
+    <h1 class="reveal-target">Ciao, sono Federica</h1>
 
-  <div class="cta">
-    <Button href="/progetti" label="Vedi progetti" />
-    <Button href="/contatti" label="Contatti" />
+    <p class="subtitle">
+      Laureata in Ingegneria Energetica
+    </p>
+
+    <p class="description">
+      con crescente interesse per lo sviluppo front-end e la progettazione di interfacce web.
+    </p>
+
+    <div class="cta">
+      <Button href="/progetti" label="Vedi progetti" />
+      <Button href="/contatti" label="Contatti" />
+    </div>
+
   </div>
 
 </section>
 
 <section class="grid">
 
-  <div class="card">
+  <div class="card reveal-on-scroll">
     <h3>Formazione</h3>
     <p>Percorso universitario in Ingegneria Energetica.</p>
   </div>
 
-  <div class="card">
+  <div class="card reveal-on-scroll">
     <h3>Focus</h3>
     <p>Apprendimento sviluppo web e interfacce digitali.</p>
   </div>
 
-  <div class="card">
+  <div class="card reveal-on-scroll">
     <h3>Obiettivo</h3>
     <p>Crescita nel settore tech e progettazione UI.</p>
   </div>
@@ -44,3 +54,18 @@ import Button from "../components/UI/button.astro";
 </section>
 
 </Layout>
+
+<script>
+  // PUNTO 6: animazione di reveal parola per parola sull'h1
+  // divide il testo in span (.reveal-word, già definiti in global.css)
+  // e li fa comparire in sequenza con un piccolo ritardo ciascuno.
+  document.querySelectorAll(".reveal-target").forEach((el) => {
+    const words = el.textContent!.trim().split(" ");
+    el.innerHTML = words
+      .map(
+        (w, i) =>
+          `<span class="reveal-word" style="animation-delay:${i * 0.09}s">${w}</span>`
+      )
+      .join(" ");
+  });
+</script>
