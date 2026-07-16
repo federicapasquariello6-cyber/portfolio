@@ -36,12 +36,43 @@ const { title = "FP" } = Astro.props;
 </button>
 
   <nav id="mainNav">
-    <a href="/" class={`${Astro.url.pathname === "/" ? "active gradient-text" : ""}`}>Home</a>
-    <a href="/about" class={Astro.url.pathname === "/about" ? "active" : ""}>About</a>
-    <a href="/progetti" class={Astro.url.pathname === "/progetti" ? "active" : ""}>Progetti</a>
-    <a href="/cv" class={Astro.url.pathname === "/cv" ? "active" : ""}>CV</a>
-    <a href="/contatti" class={Astro.url.pathname === "/contatti" ? "active" : ""}>Contatti</a>
-  </nav>
+
+  <a 
+    href="/" 
+    class={`gradient-text ${Astro.url.pathname === "/" ? "active" : ""}`}
+  >
+    Home
+  </a>
+
+  <a 
+    href="/about" 
+    class={Astro.url.pathname === "/about" ? "active" : ""}
+  >
+    About
+  </a>
+
+  <a 
+    href="/progetti" 
+    class={Astro.url.pathname === "/progetti" ? "active" : ""}
+  >
+    Progetti
+  </a>
+
+  <a 
+    href="/cv" 
+    class={Astro.url.pathname === "/cv" ? "active" : ""}
+  >
+    CV
+  </a>
+
+  <a 
+    href="/contatti" 
+    class={Astro.url.pathname === "/contatti" ? "active" : ""}
+  >
+    Contatti
+  </a>
+
+</nav>
 
 </header>
 
