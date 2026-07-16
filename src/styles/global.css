@@ -725,11 +725,22 @@ main {
   .hero { flex-direction: column; text-align: center; }
   .hero-glow { width: 300px; height: 300px; top: -60px; right: -20px; }
   .about-row,
-  .about-row.reverse{
-  
-      flex-direction:column;
-  
-  }
+.about-row.reverse {
+  flex-direction: column;
+}
+
+/* su mobile: sempre testo prima, immagine dopo */
+.about-row .card {
+  order: 1;
+}
+
+.about-row .about-image {
+  order: 2;
+}
+
+.about-image {
+  margin-top: 12px;
+}
   
   .about-image{
   
