@@ -742,12 +742,30 @@ main {
 
 @media (max-width: 600px) {
   .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 18px 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
   }
-  h1 { font-size: 38px; }
+
+  .logo {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .nav nav {
+    gap: 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+
+  h1 { font-size: 38px;
+  }
+
   .mail-link {
     display: inline-block;
     font-size: 17px;
@@ -761,4 +779,19 @@ main {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+.nav a.active {
+  position: relative;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  border-radius: 10px;
 }
