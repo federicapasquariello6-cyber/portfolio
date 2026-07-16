@@ -1650,3 +1650,27 @@ main {
 
 
 }
+
+/* CONTROLLO FINALE NAVBAR RESPONSIVE */
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+@media (min-width: 901px) {
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+}
