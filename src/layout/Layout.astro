@@ -21,36 +21,29 @@ const { title = "FP" } = Astro.props;
 <!-- CURSORE PERSONALIZZATO -->
 <div class="cursor" id="cursor"></div>
 
-<div class="glow"></div>
 
 <header class="nav">
 
   <div class="logo gradient-text">FP</div>
 
- <nav>
-  <a href="/" class={`${Astro.url.pathname === "/" ? "active" : ""} gradient-text`}>
-    Home
-  </a>
+  <button 
+  class="menu-toggle" 
+  id="menuToggle" 
+  aria-label="Apri menu"
+  aria-expanded="false"
+>
+  ☰
+</button>
 
-  <a href="/about" class={Astro.url.pathname === "/about" ? "active" : ""}>
-    About
-  </a>
-
-  <a href="/progetti" class={Astro.url.pathname === "/progetti" ? "active" : ""}>
-    Progetti
-  </a>
-
-  <a href="/cv" class={Astro.url.pathname === "/cv" ? "active" : ""}>
-    CV
-  </a>
-
-  <a href="/contatti" class={Astro.url.pathname === "/contatti" ? "active" : ""}>
-    Contatti
-  </a>
-</nav>
+  <nav id="mainNav">
+    <a href="/" class={`${Astro.url.pathname === "/" ? "active gradient-text" : ""}`}>Home</a>
+    <a href="/about" class={Astro.url.pathname === "/about" ? "active" : ""}>About</a>
+    <a href="/progetti" class={Astro.url.pathname === "/progetti" ? "active" : ""}>Progetti</a>
+    <a href="/cv" class={Astro.url.pathname === "/cv" ? "active" : ""}>CV</a>
+    <a href="/contatti" class={Astro.url.pathname === "/contatti" ? "active" : ""}>Contatti</a>
+  </nav>
 
 </header>
-
 
 <!-- Effetto navbar allo scroll -->
 <script>
@@ -65,6 +58,46 @@ const { title = "FP" } = Astro.props;
   });
 </script>
 
+<script>
+const toggle = document.getElementById("menuToggle");
+const menu = document.getElementById("mainNav");
+
+if (toggle && menu) {
+
+  toggle.addEventListener("click", () => {
+
+    const isOpen = menu.classList.toggle("open");
+
+    toggle.textContent = isOpen ? "✕" : "☰";
+
+    toggle.setAttribute(
+      "aria-expanded",
+      isOpen
+    );
+
+  });
+
+
+  // chiude il menu quando clicchi una voce
+  menu.querySelectorAll("a").forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      menu.classList.remove("open");
+
+      toggle.textContent = "☰";
+
+      toggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+  });
+
+}
+</script>
 
 <!-- CURSORE CON EFFETTO MORBIDO -->
 <script>
