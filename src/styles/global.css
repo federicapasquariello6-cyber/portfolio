@@ -697,17 +697,15 @@ p {
 
 .section-title {
 
-  margin-top:var(--space-7);
+  margin-top:40px;
 
-  margin-bottom:var(--space-4);
-
+  margin-bottom:20px;
 
   font-size:13px;
 
   text-transform:uppercase;
 
   letter-spacing:1.5px;
-
 
   color:var(--purple);
 
@@ -754,6 +752,112 @@ p {
 
 }
 
+
+/* =========================
+   DIGITAL TOOLS ICONS
+========================= */
+
+.tool-item {
+
+  width:150px;
+  height:120px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:10px;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.25s;
+  text-align:center;
+
+}
+
+.tool-item span {
+
+  width:100%;
+
+  text-align:center;
+
+  font-size:14px;
+
+  color:var(--text);
+
+}
+
+.tool-item:hover {
+
+  transform:translateY(-4px);
+
+  border-color:rgba(124,92,255,.35);
+
+}
+
+
+.tool-item span {
+
+  font-size:14px;
+
+  color:var(--text);
+
+  text-align:center;
+
+}
+
+.tool-icon {
+
+  width:30px;
+  height:30px;
+
+  border-radius:9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+    mask-image: var(--tool-icon);
+    -webkit-mask-image: var(--tool-icon);
+
+  mask-position:center;
+  mask-repeat:no-repeat;
+  mask-size:contain;
+
+  -webkit-mask-position:center;
+  -webkit-mask-repeat:no-repeat;
+  -webkit-mask-size:contain;
+
+}
+
+.tool-github {
+  --tool-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.3 6.84 9.65.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.45-1.17-1.1-1.48-1.1-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.55 2.35 1.1 2.92.84.1-.66.35-1.1.64-1.35-2.22-.26-4.56-1.14-4.56-5.05 0-1.12.38-2.03 1-2.75-.1-.26-.43-1.3.1-2.7 0 0 .83-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.3c.85 0 1.7.12 2.5.36 1.9-1.32 2.74-1.05 2.74-1.05.54 1.4.2 2.44.1 2.7.63.72 1 1.63 1 2.75 0 3.92-2.35 4.78-4.58 5.04.36.32.68.95.68 1.92v2.85c0 .27.18.59.69.48A10 10 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z'/%3E%3C/svg%3E");
+  }
+  
+  .tool-vercel {
+  --tool-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 3 2 20h20L12 3Z'/%3E%3C/svg%3E");
+  }
+  
+  .tool-cursor {
+  --tool-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M5 3v18l5-5 4 6 2-1-4-6h7L5 3Z'/%3E%3C/svg%3E");
+  }
+  
+  .tool-claude {
+  --tool-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='black'/%3E%3C/svg%3E");
+  }
 
 
 
@@ -864,17 +968,17 @@ p {
 
 .tags span {
 
-  font-size:12px;
+  font-size:13px;
 
-  padding:4px 8px;
-
+  padding:7px 12px;
 
   border-radius:999px;
 
-
   background:rgba(255,255,255,.06);
 
-  color:var(--muted);
+  border:1px solid rgba(255,255,255,.08);
+
+  color:var(--text);
 
 }
 
@@ -1677,6 +1781,104 @@ main {
 
   .menu-toggle {
     display: none !important;
+  }
+
+}
+
+/* =========================
+   CV SKILLS BADGES
+========================= */
+
+.cv-skills {
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:24px;
+
+  max-width:760px;
+
+}
+
+
+.cv-skills span {
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  height:34px;
+
+  padding:0 16px;
+
+  border-radius:999px;
+
+  font-size:13px;
+
+  background:rgba(255,255,255,.06);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:var(--text);
+
+}
+
+
+
+/* =========================
+   CV TOOLS
+========================= */
+
+.tools-grid {
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+
+}
+
+
+.tool-item {
+
+  width:150px;
+  height:120px;
+
+  border-radius:16px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:12px;
+
+  padding:0;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.25s;
+
+  text-align:center;
+
+}
+
+
+.tool-item span {
+  line-height:1;
+}
+
+
+@media(max-width:900px){
+
+  .tools-grid {
+    grid-template-columns:repeat(2,150px);
   }
 
 }
