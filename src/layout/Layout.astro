@@ -18,77 +18,72 @@ const { title = "FP" } = Astro.props;
 
 <body>
 
-<!-- CURSORE PERSONALIZZATO -->
 <div class="cursor" id="cursor"></div>
-
 
 <header class="nav">
 
   <a href="/" class="logo gradient-text">
-  FP
-</a>
+    FP
+  </a>
 
-  <button 
-  class="menu-toggle" 
-  id="menuToggle" 
-  aria-label="Apri menu"
-  aria-expanded="false"
->
-  ☰
-</button>
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Apri menu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
   <nav id="mainNav">
 
-  <a 
-    href="/" 
-    class={`gradient-text ${Astro.url.pathname === "/" ? "active" : ""}`}
-  >
-    Home
-  </a>
+    <a
+      href="/"
+      class={`gradient-text ${Astro.url.pathname === "/" ? "active" : ""}`}
+    >
+      Home
+    </a>
 
-  <a 
-    href="/about" 
-    class={Astro.url.pathname === "/about" ? "active" : ""}
-  >
-    About
-  </a>
+    <a
+      href="/about"
+      class={Astro.url.pathname === "/about" ? "active" : ""}
+    >
+      About
+    </a>
 
-  <a 
-    href="/progetti" 
-    class={Astro.url.pathname === "/progetti" ? "active" : ""}
-  >
-    Progetti
-  </a>
+    <a
+      href="/progetti"
+      class={Astro.url.pathname === "/progetti" ? "active" : ""}
+    >
+      Progetti
+    </a>
 
-  <a 
-    href="/cv" 
-    class={Astro.url.pathname === "/cv" ? "active" : ""}
-  >
-    CV
-  </a>
+    <a
+      href="/cv"
+      class={Astro.url.pathname === "/cv" ? "active" : ""}
+    >
+      CV
+    </a>
 
-  <a 
-    href="/contatti" 
-    class={Astro.url.pathname === "/contatti" ? "active" : ""}
-  >
-    Contatti
-  </a>
+    <a
+      href="/contatti"
+      class={Astro.url.pathname === "/contatti" ? "active" : ""}
+    >
+      Contatti
+    </a>
 
-</nav>
+  </nav>
 
 </header>
 
-<!-- Effetto navbar allo scroll -->
 <script>
-  const nav = document.querySelector(".nav");
+const nav = document.querySelector(".nav");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 10) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  });
+window.addEventListener("scroll", () => {
+  nav?.classList.toggle("scrolled", window.scrollY > 10);
+});
 </script>
 
 <script>
@@ -101,29 +96,37 @@ if (toggle && menu) {
 
     const isOpen = menu.classList.toggle("open");
 
-    toggle.textContent = isOpen ? "✕" : "☰";
+    toggle.setAttribute("aria-expanded", isOpen);
 
-    toggle.setAttribute(
-      "aria-expanded",
-      isOpen
-    );
+    if (isOpen) {
+
+      toggle.innerHTML = "✕";
+
+    } else {
+
+      toggle.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+      `;
+
+    }
 
   });
 
-
-  // chiude il menu quando clicchi una voce
-  menu.querySelectorAll("a").forEach((link) => {
+  menu.querySelectorAll("a").forEach(link => {
 
     link.addEventListener("click", () => {
 
       menu.classList.remove("open");
 
-      toggle.textContent = "☰";
+      toggle.setAttribute("aria-expanded", "false");
 
-      toggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
+      toggle.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+      `;
 
     });
 
@@ -132,102 +135,92 @@ if (toggle && menu) {
 }
 </script>
 
-<!-- CURSORE CON EFFETTO MORBIDO -->
 <script>
-  const cursor = document.getElementById("cursor");
+const cursor = document.getElementById("cursor");
 
-  if (cursor) {
+if (cursor) {
 
-    let mouseX = 0;
-    let mouseY = 0;
+  let mouseX = 0;
+  let mouseY = 0;
 
-    let currentX = 0;
-    let currentY = 0;
-    let hasMoved = false;
+  let currentX = 0;
+  let currentY = 0;
 
+  let hasMoved = false;
 
-    window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!hasMoved) {
-        currentX = mouseX;
-        currentY = mouseY;
-        hasMoved = true;
-      }
-      cursor.classList.add("is-visible");
-    });
+  window.addEventListener("mousemove", (e) => {
 
-    document.querySelectorAll("a, button, .btn, .card, .item, .project-card, input, textarea").forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("is-hovering"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("is-hovering"));
-    });
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-    document.addEventListener("mouseleave", () => cursor.classList.remove("is-visible"));
-    document.addEventListener("mouseenter", () => cursor.classList.add("is-visible"));
+    if (!hasMoved) {
 
+      currentX = mouseX;
+      currentY = mouseY;
+      hasMoved = true;
 
-    function animateCursor() {
-
-      currentX += (mouseX - currentX) * 0.18;
-      currentY += (mouseY - currentY) * 0.18;
-
-
-      cursor.style.left = `${currentX}px`;
-      cursor.style.top = `${currentY}px`;
-
-
-      requestAnimationFrame(animateCursor);
     }
 
+    cursor.classList.add("is-visible");
 
-    animateCursor();
+  });
+
+  document.querySelectorAll("a, button, .btn, .card, .item, .project-card, input, textarea")
+    .forEach(el => {
+
+      el.addEventListener("mouseenter", () => cursor.classList.add("is-hovering"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("is-hovering"));
+
+    });
+
+  document.addEventListener("mouseleave", () => cursor.classList.remove("is-visible"));
+  document.addEventListener("mouseenter", () => cursor.classList.add("is-visible"));
+
+  function animateCursor() {
+
+    currentX += (mouseX - currentX) * 0.18;
+    currentY += (mouseY - currentY) * 0.18;
+
+    cursor.style.left = `${currentX}px`;
+    cursor.style.top = `${currentY}px`;
+
+    requestAnimationFrame(animateCursor);
 
   }
-</script>
 
+  animateCursor();
+
+}
+</script>
 
 <main class="container">
   <slot />
 </main>
 
-
-<!-- Animazioni comparsa elementi -->
 <script>
+const revealEls = document.querySelectorAll(".reveal-on-scroll");
 
-  const revealEls = document.querySelectorAll(".reveal-on-scroll");
+const observer = new IntersectionObserver((entries) => {
 
+  entries.forEach(entry => {
 
-  const observer = new IntersectionObserver(
-    (entries) => {
+    if (entry.isIntersecting) {
 
-      entries.forEach((entry) => {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
 
-        if (entry.isIntersecting) {
+    }
 
-          entry.target.classList.add("is-visible");
+  });
 
-          observer.unobserve(entry.target);
+}, { threshold: 0.15 });
 
-        }
-
-      });
-
-    },
-    { threshold: 0.15 }
-  );
-
-
-  revealEls.forEach((el) => observer.observe(el));
-
+revealEls.forEach(el => observer.observe(el));
 </script>
 
-
 <footer class="footer">
-
   <p>© {new Date().getFullYear()} FP</p>
-
 </footer>
-
 
 </body>
 </html>
