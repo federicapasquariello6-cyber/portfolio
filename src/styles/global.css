@@ -1664,7 +1664,12 @@ main {
   }
 
 
-
+  .cta {
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
 
   /* ABOUT:
