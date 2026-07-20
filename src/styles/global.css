@@ -1242,12 +1242,27 @@ p {
 
 }
 
+
 .hero-text h1,
-.hero-text p,
+.hero-text p {
+
+  max-width:650px;
+
+}
+
+
 .hero-text .cta {
 
-  width:100%;
+  width:auto;
 
+}
+
+.hero-text h1 {
+  margin-left:0;
+}
+
+.hero-text p {
+  margin-left:0;
 }
 
 
