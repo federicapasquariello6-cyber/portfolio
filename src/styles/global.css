@@ -1647,14 +1647,7 @@ main {
     gap: 20px;
   }
   
-  .hero-text {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-
-
+  
   .hero-glow {
 
     width:300px;
@@ -1667,14 +1660,37 @@ main {
 
   }
 
-
-  .cta {
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+  .hero-text {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
-
+  
+  
+  .hero-text h1 {
+    margin-bottom:10px;
+  }
+  
+  
+  .hero-text p {
+    margin:0;
+    line-height:1.5;
+  }
+  
+  
+  .hero-text p + p {
+    margin-top:4px;
+  }
+  
+  
+  .cta {
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  
 
   /* ABOUT:
      testo sempre prima,
