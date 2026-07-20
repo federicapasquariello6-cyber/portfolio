@@ -1642,11 +1642,15 @@ main {
 
 
   .hero {
-
-    flex-direction:column;
-
-    text-align:center;
-
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
 
